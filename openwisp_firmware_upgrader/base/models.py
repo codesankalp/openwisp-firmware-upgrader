@@ -13,7 +13,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import gettext_lazy as _
 from private_storage.fields import PrivateFileField
 
-from openwisp_users.mixins import OrgMixin
+from openwisp_users.mixins import ShareableOrgMixin
 from openwisp_utils.base import TimeStampedEditableModel
 
 from .. import settings as app_settings
@@ -39,7 +39,7 @@ from ..tasks import (
 logger = logging.getLogger(__name__)
 
 
-class AbstractCategory(OrgMixin, TimeStampedEditableModel):
+class AbstractCategory(ShareableOrgMixin, TimeStampedEditableModel):
     name = models.CharField(max_length=64, db_index=True)
     description = models.TextField(blank=True)
 
